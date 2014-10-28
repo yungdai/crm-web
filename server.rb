@@ -12,7 +12,7 @@ require 'sinatra'
 
 get "/" do
   # go inside the views folder for index.html
-  html :index
+  erb :index
 end
 
 # get '/contacts' do
