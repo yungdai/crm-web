@@ -34,3 +34,18 @@ end
 get '/contacts/new' do
   erb :new_contact
 end
+
+# inspect the data submitted by the form
+post '/contacts' do
+  # puts params # inspect the data submitted by the form and shows the raw data
+  # The params hash is available inside any block!!
+
+
+  # This calls new_contact.erb and creates a new Contact.Object with the keys that Contact.Object Requires
+  new_contact = Contact.new(params[:first_name], params[:last_name], params[:email], params[:note])
+  $rolodex.add_contact(new_contact)
+
+  # Once a new object is create if should return you to the /views/contacts.erb file
+  redirect to('/contacts')
+end
+
