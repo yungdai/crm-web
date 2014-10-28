@@ -12,6 +12,7 @@
   <! -- Update the views/contacts.erb view to use the rolodex
   <% $rolodex.contacts.each do |contact| %>
       <li><%= contact.first_name %> <%= contact.last_name %></li>
+      <li> <a href="/">Click here to go back to  the main CRM page</a></li>
   <% end %>
 </ul>
 
