@@ -1,3 +1,5 @@
+# include Contact class into the crm.rb program
+require_relative 'contacts'
 # Requiring that the sinatra server to be running
 require 'sinatra'
 
@@ -18,4 +20,12 @@ get '/' do
   erb :index
 end
 
-
+# new GET request to /view/contacts.erb file
+# "/contacts" route with some fake data using the contacts object Inside crm.rb, create some fake data inside an array
+get "/contacts" do
+  @contacts = []
+  @contacts << Contact.new("Julie", "Hache", "julie@bitmakerlabs.com", "Instructor")
+  @contacts << Contact.new("Will", "Richman", "will@bitmakerlabs.com", "Co-Founder")
+  @contacts << Contact.new("Chris", "Johnston", "chris@bitmakerlabs.com", "Instructor")
+  erb :contacts
+end
