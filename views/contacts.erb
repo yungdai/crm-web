@@ -9,7 +9,8 @@
 
 <ul>
   <!-- We can use Ruby to iterate over each item in our "erb" template. -->
-  <% @contacts.each do |contact| %>
+  <! -- Update the views/contacts.erb view to use the rolodex
+  <% $rolodex.contacts.each do |contact| %>
       <li><%= contact.first_name %> <%= contact.last_name %></li>
   <% end %>
 </ul>

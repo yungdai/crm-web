@@ -1,7 +1,12 @@
 # include Contact class into the crm.rb program
 require_relative 'contacts'
+# include the Rolodex class into the crm.rb program
+require_relative 'rolodex'
 # Requiring that the sinatra server to be running
 require 'sinatra'
+
+# In order to have access to the Rolodex from each action in Sinatra, you'll need to create a class variable before all your routes.
+$rolodex = Rolodex.new
 
 # if you go to http://localhost:4567/ you'll get "Main Menu"
 # get '/' do
@@ -21,11 +26,6 @@ get '/' do
 end
 
 # new GET request to /view/contacts.erb file
-# "/contacts" route with some fake data using the contacts object Inside crm.rb, create some fake data inside an array
 get "/contacts" do
-  @contacts = []
-  @contacts << Contact.new("Julie", "Hache", "julie@bitmakerlabs.com", "Instructor")
-  @contacts << Contact.new("Will", "Richman", "will@bitmakerlabs.com", "Co-Founder")
-  @contacts << Contact.new("Chris", "Johnston", "chris@bitmakerlabs.com", "Instructor")
   erb :contacts
 end
