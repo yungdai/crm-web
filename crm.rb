@@ -25,7 +25,12 @@ get '/' do
   erb :index
 end
 
-# new GET request to /view/contacts.erb file
+# new GET request to /views/contacts.erb file
 get "/contacts" do
   erb :contacts
+end
+
+# as the last route, add for /views/new_contacdt.erb
+get '/contacts/new' do
+  erb :new_contact
 end
