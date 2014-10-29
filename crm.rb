@@ -21,6 +21,7 @@ $rolodex = Rolodex.new
 # adding some ruby code into the crm.rb program
 # setting up an instance variable @crm_app_name that we'll be able to pass this value along to our view.
 get '/' do
+  @title = "My Bitmaker Web CRM App"
   @crm_app_name = "My CRM"
   erb :index
 end
