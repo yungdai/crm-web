@@ -1,23 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-  <!--Latest compiled and minified CSS-->
-  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">-->
-  <link type="text/css" rel="stylesheet" href="stylesheet.css"/>
-  <meta charset="UTF-8">
-  <title>Contact Management</title>
-</head>
-<body>
-<h1>All Contacts</h1>
+        <h1>All Contacts</h1>
 
-    <ul>
-          <!-- We can use Ruby to iterate over each item in our "erb" template. -->
-      <!-- Update the views/contacts.erb view to use the rolodex-->
-      <% $rolodex.contacts.each do |contact| %>
-          <li><%= contact.first_name %> <%= contact.last_name %></li>
+        <ul>
+              <!-- We can use Ruby to iterate over each item in our "erb" template. -->
+          <!-- Update the views/contacts.erb view to use the rolodex-->
+          <% $rolodex.contacts.each do |contact| %>
+              <li><%= contact.first_name %> <%= contact.last_name %></li>
 
-      <% end %>
+          <% end %>
 
-      <li> <a href="/">Click here to go back to the main page</a></li>
-    </ul>
-</body>
+          <li> <a href="/">Click here to go back to the main page</a></li>
+        </ul>
+
+

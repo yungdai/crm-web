@@ -27,11 +27,13 @@ end
 
 # new GET request to /views/contacts.erb file
 get "/contacts" do
+  @title = "View All Contacts"
   erb :contacts
 end
 
 # as the last route, add for /views/new_contacdt.erb
 get '/contacts/new' do
+  @title = "Adding New Contacts"
   erb :new_contact
 end
 

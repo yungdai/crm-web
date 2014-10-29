@@ -1,26 +1,10 @@
-<!-- Older header -->
-<!-- <h1>Welcome to this CRM!</h1> -->
-<!-- this takes the @crm_app_name variable and inserts it into the HTML.  @crm_app_name is equal to "My CRM" -->
-<!DOCTYPE html>
-<html>
-<head lang="en">
-  <!-- Latest compiled and minified CSS -->
-  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">-->
-  <link type="text/css" rel="stylesheet" href="stylesheet.css"/>
-  <meta charset="UTF-8">
-  <title>Yung's CRM App &copy;</title>
-</head>
-<body>
+<title>Yung's CRM App &copy;</title>
     <h1>Welcome to <%= @crm_app_name %> &copy;</h1>
+    <h3>The current date and time is:  <%= Time.now %></h3>
     <h2>Main menu</h2>
 
     <ul>
       <li> <a href="/contacts/new">Add a new contact</a></li>
       <li><a href="/contacts">View all contacts</a></li>
-
-
-
       <!-- please complete me with links to other actions -->
     </ul>
-
-</body>
