@@ -2,10 +2,10 @@
 require_relative 'contacts'
 # include the Rolodex class into the crm.rb program
 require_relative 'rolodex'
-@@rolodex = Rolodex.new
 
-# Temporary fake data so that we always find contact with id 1000.
-@@rolodex.add_contact(Contact.new("Johnny", "Bravo", "johnny@bitmakerlabs.com", "Rockstar"))
+
+# # Temporary fake data so that we always find contact with id 1000.
+# @@rolodex.add_contact(Contact.new("Johnny", "Bravo", "johnny@bitmakerlabs.com", "Rockstar"))
 # Requiring that the sinatra server to be running
 require 'sinatra'
 
@@ -43,11 +43,19 @@ get '/contacts/new' do
   erb :new_contact
 end
 
-# creating a new rout that is /contacts/1000 to show what is in the @@rolodex.contact_id(1000)
-get "/contacts/1000" do
-  @contact = @@rolodex.find(1000)
-  erb :show_contact
+# creating a new route that is /contacts/1000 to show what is in the @@rolodex.contact_id(1000)
+get "/contacts/:id" do
+  #this will look at the address bar and see that at at /contacts/<contact_id # = :id>
+  @contact = $rolodex.find(params[:id].to_i)
+
+  # if @contact comes back as found then run the show_contact.erb file.  If it's not found then tell Sinatra that the page is not found
+  if @contact
+      erb :show_contact
+  else
+    raise Sinatra::NotFound
+  end
 end
+
 
 # new code to edit a contact
 get "/contacts/edit/:id" do
