@@ -1,5 +1,5 @@
 body {
-    background-color: #e8f8ef;
+    background-color: #fefefe;
     font-family: Futura, Tahoma, sans-serif;
     color: #020aff;
 }
@@ -14,22 +14,25 @@ body {
 
 
 h1 {
-    background-color: #e8f8ef;
+    background-color: #fefefe;
     font-family: Futura, Tahoma, sans-serif;
     color: #0200ff;
 }
 
 h4 {
-    background-color: #e8f8ef;
+    background-color: #fefefe;
     font-family: Futura, Tahoma, sans-serif;
     color: #0200ff;
     margin-left: 5%;
 }
 
 img {
-    height: 170px;
-    width: 170px;
-    box-shadow: rgba(0,0,0,0.2) 10px 10px;
+    height: 10%;
+    width: 10%;
+    margin-top: 10;
+    margin-left: 5;
+    margin-right: 10%;
+    box-shadow: rgba(0,0,0,0.2) 5px 5px;
 
 }
 

@@ -21,14 +21,9 @@ class Rolodex
 
   def search_contact(contact_id)
     # return nil
-     @contacts.each do |contact|
-       if contact.id == contact_id
-         return contact
-       else
-         return nil
-       end
+     @contacts.find{|contact| contact.id == contact_id}
      end
-  end
+
 
   def display_all
     @contacts.each do |contact|
