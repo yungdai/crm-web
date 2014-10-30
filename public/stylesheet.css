@@ -4,10 +4,19 @@ body {
     color: #020aff;
 }
 
+.line-separator{
+    height:1px;
+    background: #464646;
+    border-bottom:1px solid #311a09;
+
+}
+
+
+
 h1 {
     background-color: #bfd7f8;
     font-family: Futura, Tahoma, sans-serif;
-    color: #020aff;
+    color: #0200ff;
 }
 
 img {
@@ -45,7 +54,7 @@ li {
     color: #ffffff;
     padding: 5px;
     border-radius: 5px 5px;
-    background-color: #7498cc
+    background-color: #bfaacc
 }
 
 #left{
