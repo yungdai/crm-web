@@ -1,20 +1,30 @@
 <a href="http://www.bitmakerlabs.com"><img src="/logo-bitmaker-fb.png" alt="image not found"></a>
 <div class="line-separator"</div>
 <h1>All Contacts</h1>
-<h4>Contact ID</h4>
 <ul>
-      <!-- We can use Ruby to iterate over each item in our "erb" template. -->
-  <!-- Update the views/contacts.erb view to use the rolodex-->
-
-  <form action="/contacts" method="post">
-  <h4>
-  <% $rolodex.contacts.each do |contact| %>
-  <li><%= contact.id %> <%=contact.first_name %> <%= contact.last_name %> <%= contact.email %> <%= contact.note %></li>
-  </h4>
-  <% end %>
-
-
-  </form>
-  <br/>
-  <li> <a href="/">Click here to go back to the main page</a></li>
+  <table class="table">
+    <thead>
+    <th></th>
+    <th>Contact ID</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Email</th>
+    <th>Note</th>
+    <th></th>
+    </thead>
+    <tbody>
+    <% $rolodex.contacts.each do |contact| %>
+        <tr>
+          <td><a href="/contacts/edit/<%= contact.id %>">Edit</a></td>
+          <td><%= contact.id %></td>
+          <td><%= contact.first_name %></td>
+          <td><%= contact.last_name %></td>
+          <td><%= contact.email %></td>
+          <td><%= contact.note %></td>
+          <td><a href="/contacts/delete/<%= contact.id %>">Delete</a></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <a href="/">Click here to go back to the main page</a>
 </ul>

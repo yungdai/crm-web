@@ -2,6 +2,10 @@
 require_relative 'contacts'
 # include the Rolodex class into the crm.rb program
 require_relative 'rolodex'
+@@rolodex = Rolodex.new
+
+# Temporary fake data so that we always find contact with id 1000.
+@@rolodex.add_contact(Contact.new("Johnny", "Bravo", "johnny@bitmakerlabs.com", "Rockstar"))
 # Requiring that the sinatra server to be running
 require 'sinatra'
 
@@ -20,9 +24,10 @@ $rolodex = Rolodex.new
 
 # adding some ruby code into the crm.rb program
 # setting up an instance variable @crm_app_name that we'll be able to pass this value along to our view.
+
 get '/' do
   @title = "My Bitmaker Web CRM App"
-  @crm_app_name = "My CRM"
+  @crm_app_name = "My Bitmaker CRM"
   erb :index
 end
 
@@ -36,6 +41,22 @@ end
 get '/contacts/new' do
   @title = "Adding New Contacts"
   erb :new_contact
+end
+
+# creating a new rout that is /contacts/1000 to show what is in the @@rolodex.contact_id(1000)
+get "/contacts/1000" do
+  @contact = @@rolodex.find(1000)
+  erb :show_contact
+end
+
+# new code to edit a contact
+get "/contacts/edit/:id" do
+  id = params[:id].to_i
+  puts params
+  contact_to_edit = $rolodex.find_contact(id)[0]
+  puts contact_to_edit
+  $rolodex.set_contact(contact_to_edit)
+  erb :edit_contact
 end
 
 # inspect the data submitted by the form

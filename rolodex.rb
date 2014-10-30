@@ -19,11 +19,18 @@ class Rolodex
     @contacts << contact
   end
 
-  def search_contact(contact_id)
-    # return nil
+  # this method is for finding a contact in the Rolodex.Object
+  def find(contact_id)
      @contacts.find{|contact| contact.id == contact_id}
-     end
+  end
 
+  # this code edits the contact
+  def edit_contact(first_name,last_name,email,note)
+    @selected_contact.first_name = first_name
+    @selected_contact.last_name = last_name
+    @selected_contact.email = email
+    @selected_contact.note = note
+  end
 
   def display_all
     @contacts.each do |contact|
