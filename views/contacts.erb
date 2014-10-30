@@ -1,14 +1,18 @@
-        <h1>All Contacts</h1>
+<h1>All Contacts</h1>
+<h4>Contact ID</h4>
+<ul>
+      <!-- We can use Ruby to iterate over each item in our "erb" template. -->
+  <!-- Update the views/contacts.erb view to use the rolodex-->
 
-        <ul>
-              <!-- We can use Ruby to iterate over each item in our "erb" template. -->
-          <!-- Update the views/contacts.erb view to use the rolodex-->
-          <% $rolodex.contacts.each do |contact| %>
-              <li><%= contact.first_name %> <%= contact.last_name %></li>
-
-          <% end %>
-
-          <li> <a href="/">Click here to go back to the main page</a></li>
-        </ul>
+  <form action="/contacts" method="post">
+  <h4>
+  <% $rolodex.contacts.each do |contact| %>
+  <li><%= contact.id %> <%=contact.first_name %> <%= contact.last_name %> <%= contact.email %> <%= contact.note %></li>
+  </h4>
+  <% end %>
 
 
+  </form>
+  <br/>
+  <li> <a href="/">Click here to go back to the main page</a></li>
+</ul>

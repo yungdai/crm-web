@@ -1,5 +1,5 @@
 body {
-    background-color: #bfd7f8;
+    background-color: #e8f8ef;
     font-family: Futura, Tahoma, sans-serif;
     color: #020aff;
 }
@@ -14,9 +14,16 @@ body {
 
 
 h1 {
-    background-color: #bfd7f8;
+    background-color: #e8f8ef;
     font-family: Futura, Tahoma, sans-serif;
     color: #0200ff;
+}
+
+h4 {
+    background-color: #e8f8ef;
+    font-family: Futura, Tahoma, sans-serif;
+    color: #0200ff;
+    margin-left: 5%;
 }
 
 img {
@@ -48,11 +55,11 @@ ul{
 }
 
 li {
-    display: inline;
+    display: inline-block;
     border: 2px solid #000000;
     font-family: Futura, Tahoma, sans-serif;
     color: #ffffff;
-    padding: 5px;
+    padding: 3px;
     border-radius: 5px 5px;
     background-color: #bfaacc
 }
@@ -145,5 +152,3 @@ th {
     font-variant: small-caps;
     color: #ffffff;
 }
-
--->
