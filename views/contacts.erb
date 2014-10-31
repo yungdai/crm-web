@@ -1,5 +1,5 @@
 <a href="http://www.bitmakerlabs.com"><img src="/logo-bitmaker-fb.png" alt="image not found"></a>
-<div class="line-separator"</div>
+<div class="line-separator"></div>
 <h1>All Contacts</h1>
 <ul>
   <table class="table">
@@ -21,7 +21,7 @@
           <td><%= contact.last_name %></td>
           <td><%= contact.email %></td>
           <td><%= contact.note %></td>
-          <td><a href="/contacts/delete/<%= contact.id %>">Delete</a></td>
+          <td><a href="/contacts/<%= contact.id %>">Delete</a></td>
         </tr>
     <% end %>
     </tbody>

@@ -46,8 +46,10 @@ class Rolodex
     end
   end
 
-  def delete_contact(id_delete)
-    # delete the @contacts.Object if the contact ID is == the id_delete parameter
-    @contacts.delete_if{|contact| contact.id == id_delete}
+
+  # this method is to delete a contact
+  def remove_contact(contact)
+    @contacts.delete(contact)
   end
+
 end
