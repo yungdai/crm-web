@@ -52,9 +52,9 @@ get "/contacts/:id" do
   # if @contact comes back as found then run the show_contact.erb file.  If it's not found then tell Sinatra that the
   # page is not found
   if @contact
-      erb :show_contact
+    erb :show_contact
   else
-    raise Sinatra::NotFound
+    erb :not_found
   end
 end
 
@@ -65,7 +65,7 @@ get "/contacts/edit/:id" do
   if @contact
     erb :edit_contact
   else
-    raise Sinatra::NotFound
+    erb :not_found
   end
 end
 
@@ -85,7 +85,7 @@ put "/contacts/:id" do
     @contact.note = params[:note]
     redirect to("/contacts")
   else
-    raise Sinatra::NotFound
+    erb :not_found
   end
 end
 
@@ -110,7 +110,7 @@ delete "/contacts/:id" do
       $rolodex.remove_contact(@contact)
       redirect to("/contacts")
     else
-      raise Sinatra::NotFound
+      erb :not_found
     end
 end
 
