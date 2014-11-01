@@ -1,4 +1,4 @@
-
+# require_relative 'contacts' has been removed because we're going to use a database now
 # include the Rolodex class into the crm.rb program
 require_relative 'rolodex'
 
@@ -15,22 +15,31 @@ require 'data_mapper'
 DataMapper.setup(:default, "sqlite3:database.sqlite3")
 
 # moved the Contact Class back into crm.rb
+# Transforming the Contact class into a DataMapper resource
 class Contact
+  #by including the DataMapper::Resource module, we will have access to the special DataMapper methods.
+  include DataMapper::Resource
   # new Contact class object
-  attr_accessor :id, :first_name, :last_name, :email, :note
+  # no need for this ruby code anymore for
+  # attr_accessor :id, :first_name, :last_name, :email, :note
+  # because every time we create a new Contact record, it will automatically be interested into the contacts
+  # database table.
 
-  def initialize(first_name, last_name, email, note)
-    @first_name = first_name
-    @last_name = last_name
-    @email = email
-    @note = note
-  end
+  # when using using the DataMapper resource
+  property :id, Serial # The Serial property represents an Integer that automatically increments
+  property :first_name, String
+  property :last_name, String
+  property :email, String
+  property :note, String
 
 end
 
+DataMapper.finalize # validate any issues with the properties or tables we defined.
+DataMapper.auto_upgrade! #takes care of effecting any changes to the underlying structure of the tables or columns
 
-# In order to have access to the Rolodex from each action in Sinatra, you'll need to create a class variable before all your routes.
-#created the global variable called $rolodex, this variable should accessible throughout the entire program.
+# In order to have access to the Rolodex from each action in Sinatra, you'll need to create a class variable before all
+# your routes.
+# created the global variable called $rolodex, this variable should accessible throughout the entire program.
 $rolodex = Rolodex.new
 
 # if you go to http://localhost:4567/ you'll get "Main Menu"
@@ -55,6 +64,7 @@ end
 # new GET request to /views/contacts.erb file
 get "/contacts" do
   @title = "View All Contacts"
+  @contacts = Contact.all
   erb :contacts
 end
 
@@ -114,11 +124,12 @@ post '/contacts' do
   # puts params # inspect the data submitted by the form and shows the raw data
   # The params hash is available inside any block!!
 
-
-  # This calls new_contact.erb and creates a new Contact.Object with the keys that Contact.Object Requires
-  new_contact = Contact.new(params[:first_name], params[:last_name], params[:email], params[:note])
-  $rolodex.add_contact(new_contact)
-
+  contact = Contact.create(
+      :first_name => params[:first_name],
+      :last_name => params[:last_name],
+      :email => params[:email],
+      :note => params[:note]
+  )
   # Once a new object is create if should return you to the /views/contacts.erb file
   redirect to('/contacts')
 end

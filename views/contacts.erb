@@ -16,7 +16,7 @@
     <th></th>
     </thead>
     <tbody>
-    <% $rolodex.contacts.each do |contact| %>
+    <% @contacts.each do |contact| %>
         <tr>
           <td><a href="/contacts/edit/<%= contact.id %>">Edit</a></td>
           <td><%= contact.id %></td>
