@@ -1,16 +1,36 @@
-# include Contact class into the crm.rb program
-require_relative 'contacts'
+
 # include the Rolodex class into the crm.rb program
 require_relative 'rolodex'
 
 
 # # Temporary fake data so that we always find contact with id 1000.  Uncomment to use
+# @@rolodex is a class variable and only accessible inside the class
 # @@rolodex = Rolodex.new
 # @@rolodex.add_contact(Contact.new("Johnny", "Bravo", "johnny@bitmakerlabs.com", "Rockstar"))
 # Requiring that the sinatra server to be running
 require 'sinatra'
 
+# requiring DataMapper, it is a database agnostic ORM
+require 'data_mapper'
+DataMapper.setup(:default, "sqlite3:database.sqlite3")
+
+# moved the Contact Class back into crm.rb
+class Contact
+  # new Contact class object
+  attr_accessor :id, :first_name, :last_name, :email, :note
+
+  def initialize(first_name, last_name, email, note)
+    @first_name = first_name
+    @last_name = last_name
+    @email = email
+    @note = note
+  end
+
+end
+
+
 # In order to have access to the Rolodex from each action in Sinatra, you'll need to create a class variable before all your routes.
+#created the global variable called $rolodex, this variable should accessible throughout the entire program.
 $rolodex = Rolodex.new
 
 # if you go to http://localhost:4567/ you'll get "Main Menu"
