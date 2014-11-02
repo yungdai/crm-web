@@ -1,6 +1,7 @@
 body {
     background-color: #fefefe;
     background-image: url("simple_blue_background.jpg");
+    background-size: 100%;
     background-repeat: no-repeat;
     font-family: Futura, Tahoma, sans-serif;
     color: #020aff;
@@ -27,8 +28,8 @@ h1 {
     background-color: #fefefe;
     font-family: Futura, Tahoma, sans-serif;
     color: #0200ff;
-    margin-left: 5p;
-    margin-right: 10%;
+    margin-left: 0px;
+    margin-right: 0px;
 }
 
 h4 {
