@@ -1,6 +1,6 @@
 # require_relative 'contacts' has been removed because we're going to use a database now
 # include the Rolodex class into the crm.rb program
-require_relative 'rolodex'
+# require_relative 'rolodex'
 
 
 # # Temporary fake data so that we always find contact with id 1000.  Uncomment to use
@@ -40,7 +40,7 @@ DataMapper.auto_upgrade! #takes care of effecting any changes to the underlying 
 # In order to have access to the Rolodex from each action in Sinatra, you'll need to create a class variable before all
 # your routes.
 # created the global variable called $rolodex, this variable should accessible throughout the entire program.
-$rolodex = Rolodex.new
+# No longer required to use Rolodex:  $rolodex = Rolodex.new
 
 # if you go to http://localhost:4567/ you'll get "Main Menu"
 # get '/' do
@@ -62,23 +62,22 @@ get '/' do
 end
 
 # new GET request to /views/contacts.erb file
-get "/contacts" do
+get '/contacts' do
   @title = "View All Contacts"
   @contacts = Contact.all
   erb :contacts
 end
 
-# as the last route, add for /views/new_contacdt.erb
+# Add a new contact!  As the last route, add for /views/new_contacdt.erb
 get '/contacts/new' do
   @title = "Adding New Contacts"
   erb :new_contact
 end
 
 # creating a new route that is /contacts/<id#>
-get "/contacts/:id" do
+get '/contacts/:id' do
   #this will look at the address bar and see that at at /contacts/<contact_id # = :id>
-  @contact = $rolodex.find(params[:id].to_i)
-
+  @contact = Contact.get(params[:id].to_i)
   # if @contact comes back as found then run the show_contact.erb file.  If it's not found then tell Sinatra that the
   # page is not found
   if @contact
@@ -89,15 +88,23 @@ get "/contacts/:id" do
 end
 
 
-# create a new route that is /contatcs/<id#>/edit
-get "/contacts/edit/:id" do
-  @contact = $rolodex.find(params[:id].to_i)
+# create a new route that is /contacts/<id#>/edit
+# this get method is us used to edit a contact
+get '/contacts/edit/:id' do
+  @contact = Contact.get(params[:id].to_i)
   if @contact
     erb :edit_contact
+    # @contacts.update(
+    #     :first_name => params[:first_name],
+    #     :last_name => params[:last_name],
+    #     :email => params[:email],
+    #     :note => params[:note],
+    # )
   else
     erb :not_found
   end
 end
+
 
 # if the Sinatra gets a put request it will get it for the /contacts/<id#>
 # Let's look at this new route step-by-step:
@@ -106,8 +113,8 @@ end
 # # With the id from the params, we start by finding the contact. If there's ever any reason we don't find it, we raise
 # "Not Found".
 # # If the contact is found, we need to update it. Once it's updated, we want to redirect to our main contacts page.
-put "/contacts/:id" do
-@contact = $rolodex.find(params[:id].to_i)
+put '/contacts/:id' do
+@contact = Contact.get(params[:id].to_i)
   if @contact
     @contact.first_name = params[:first_name]
     @contact.last_name = params[:last_name]
@@ -124,7 +131,7 @@ post '/contacts' do
   # puts params # inspect the data submitted by the form and shows the raw data
   # The params hash is available inside any block!!
 
-  contact = Contact.create(
+  @contact = Contact.create(
       :first_name => params[:first_name],
       :last_name => params[:last_name],
       :email => params[:email],
@@ -135,10 +142,10 @@ post '/contacts' do
 end
 
 # delete a contact
-delete "/contacts/:id" do
-  @contact = $rolodex.find(params[:id].to_i)
+delete '/contacts/:id' do
+  @contact = Contact.get(params[:id].to_i)
     if @contact
-      $rolodex.remove_contact(@contact)
+      @contact.destroy
       redirect to("/contacts")
     else
       erb :not_found
