@@ -1,10 +1,10 @@
 body {
     background-color: #fefefe;
-    background-image: url("simple_blue_background.jpg");
+    /*background-image: url("simple_blue_background.jpg");*/
     background-size: 100%;
     background-repeat: no-repeat;
     font-family: Futura, Tahoma, sans-serif;
-    color: #000000;
+    color: #1965f1;
 }
 
 .line-separator{
@@ -13,19 +13,11 @@ body {
     border-bottom:1px solid #311a09;
 
 }
-form {
-    background-color: transparent;
-    font-family: Futura, Tahoma, sans-serif;
-    color: #000000;
-    margin-left: 0px;
-    margin-right: 5%;
-
-}
 
 a {
     background-color: transparent;
     font-family: Futura, Tahoma, sans-serif;
-    color: #000000;
+    color: #1965f1;
     margin-left: 0px;
     margin-right: 5%;
 }
@@ -34,7 +26,7 @@ a {
 h1 {
     background-color: transparent;
     font-family: Futura, Tahoma, sans-serif;
-    color: #000000;
+    color: #1965f1;
     margin-left: 0px;
     margin-right: 0px;
 }
@@ -42,7 +34,7 @@ h1 {
 h4 {
     background-color: transparent;
     font-family: Futura, Tahoma, sans-serif;
-    color: #000000;
+    color: #1965f1;
     margin-left: 0px;
 }
 
@@ -80,7 +72,7 @@ ul{
 
 li {
     display: inline-block;
-    border: 2px solid #000000;
+    border: 2px solid #1965f1;
     font-family: Futura, Tahoma, sans-serif;
     color: #efefef;
     padding: 3px;
