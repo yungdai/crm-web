@@ -1,5 +1,6 @@
 <h1>Editing Contact <%= @contact.first_name %> <%= @contact.last_name %></h1>
 
+<!-- here you're calling up /contacts/:id put method in crm.rb-->
 <form action="/contacts/<%= @contact.id %>" method="post">
   <input type="hidden" name="_method" value="put">
   <input type="text" name="first_name" value="<%= @contact.first_name %>">
