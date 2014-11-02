@@ -87,19 +87,12 @@ get '/contacts/:id' do
   end
 end
 
-
 # create a new route that is /contacts/<id#>/edit
 # this get method is us used to edit a contact
 get '/contacts/edit/:id' do
   @contact = Contact.get(params[:id].to_i)
   if @contact
     erb :edit_contact
-    # @contacts.update(
-    #     :first_name => params[:first_name],
-    #     :last_name => params[:last_name],
-    #     :email => params[:email],
-    #     :note => params[:note],
-    # )
   else
     erb :not_found
   end
@@ -115,12 +108,13 @@ end
 # # If the contact is found, we need to update it. Once it's updated, we want to redirect to our main contacts page.
 put '/contacts/:id' do
 @contact = Contact.get(params[:id].to_i)
-  if @contact
-    @contact.first_name = params[:first_name]
-    @contact.last_name = params[:last_name]
-    @contact.email = params[:email]
-    @contact.note = params[:note]
-    redirect to("/contacts")
+  if @contact.update(
+          :first_name => params[:first_name],
+          :last_name => params[:last_name],
+          :email => params[:email],
+          :note => params[:note]
+      )
+    redirect to ('/contacts')
   else
     erb :not_found
   end
@@ -140,6 +134,8 @@ post '/contacts' do
   # Once a new object is create if should return you to the /views/contacts.erb file
   redirect to('/contacts')
 end
+
+
 
 # delete a contact
 delete '/contacts/:id' do
