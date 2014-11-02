@@ -75,13 +75,14 @@ get '/contacts/new' do
 end
 
 # creating a new route that is /contacts/<id#>
+# this get method will go to delete_contract.erb when found
 get '/contacts/:id' do
   #this will look at the address bar and see that at at /contacts/<contact_id # = :id>
   @contact = Contact.get(params[:id].to_i)
   # if @contact comes back as found then run the show_contact.erb file.  If it's not found then tell Sinatra that the
   # page is not found
   if @contact
-    erb :show_contact
+    erb :delete_contact
   else
     erb :not_found
   end
