@@ -4,7 +4,6 @@ body {
     background-size: 100%;
     background-repeat: no-repeat;
     font-family: Futura, Tahoma, sans-serif;
-    color: #1965f1;
 }
 
 .line-separator{
@@ -17,7 +16,6 @@ body {
 a {
     background-color: transparent;
     font-family: Futura, Tahoma, sans-serif;
-    color: #1965f1;
     margin-left: 0px;
     margin-right: 5%;
 }
@@ -26,7 +24,6 @@ a {
 h1 {
     background-color: transparent;
     font-family: Futura, Tahoma, sans-serif;
-    color: #1965f1;
     margin-left: 0px;
     margin-right: 0px;
 }
@@ -34,7 +31,6 @@ h1 {
 h4 {
     background-color: transparent;
     font-family: Futura, Tahoma, sans-serif;
-    color: #1965f1;
     margin-left: 0px;
 }
 
@@ -58,7 +54,7 @@ img {
 #header {
     position: relative;
     top: -10px;
-    background-color: #3c4543;
+    background-color: #031045;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
 }
@@ -66,7 +62,7 @@ img {
 ul{
     list-style-type: none;
     position: fixed;
-    margin-left: 5;
+    margin-left: 0;
     margin-right: 10px;
 }
 
@@ -100,8 +96,8 @@ table {
     border: #000000 2px solid;
     background-color: #ffffff;
     float: right;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 td {

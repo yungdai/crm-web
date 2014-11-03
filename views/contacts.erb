@@ -4,31 +4,31 @@
 <div class="line-separator"></div>
 <br/>
 <h1>All Contacts</h1>
-<ul>
-  <table class="table">
-    <thead>
-    <th></th>
-    <th>Contact ID</th>
-    <th>First Name</th>
-    <th>Last Name</th>
-    <th>Email</th>
-    <th>Note</th>
-    <th></th>
-    </thead>
-    <tbody>
-    <% @contacts.each do |contact| %>
-        <tr>
-          <td><a href="/contacts/edit/<%= contact.id %>">Edit</a></td>
-          <td><%= contact.id %></td>
-          <td><%= contact.first_name %></td>
-          <td><%= contact.last_name %></td>
-          <td><%= contact.email %></td>
-          <td><%= contact.note %></td>
-          <td><a href="/contacts/<%= contact.id %>">Delete</a></td>
-        </tr>
-    <% end %>
-    </tbody>
-  </table>
-  <a href="/contacts/new">Add a new contact</a>
-  <a href="/">Click here to go back to the main page</a>
-</ul>
+
+<table class="table">
+<thead>
+<th></th>
+<th>Contact ID</th>
+<th>First Name</th>
+<th>Last Name</th>
+<th>Email</th>
+<th>Note</th>
+<th></th>
+</thead>
+<tbody>
+<% @contacts.each do |contact| %>
+    <tr>
+      <td><a href="/contacts/edit/<%= contact.id %>">Edit</a></td>
+      <td><%= contact.id %></td>
+      <td><%= contact.first_name %></td>
+      <td><%= contact.last_name %></td>
+      <td><%= contact.email %></td>
+      <td><%= contact.note %></td>
+      <td><a href="/contacts/<%= contact.id %>">Delete</a></td>
+    </tr>
+<% end %>
+</tbody>
+</table>
+
+<a href="/contacts/new">Add a new contact</a>
+<a href="/">Click here to go back to the main page</a>
